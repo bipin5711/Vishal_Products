@@ -473,7 +473,7 @@ export default function Bill() {
 						</Grid>
 						{items.map((item, index) => (
 							<>
-								<Grid item xs={5}>
+								<Grid item xs={4}>
 									<TextField
 										variant="outlined"
 										name="productname"
@@ -488,7 +488,7 @@ export default function Bill() {
 										label="Name"
 									/>
 								</Grid>
-								<Grid item xs>
+								<Grid item xs={2}>
 									<TextField
 										variant="outlined"
 										size="small"
@@ -504,7 +504,7 @@ export default function Bill() {
 									/>
 								</Grid>
 
-								<Grid item xs>
+								<Grid item xs={2}>
 									<TextField
 										variant="outlined"
 										size="small"
@@ -534,7 +534,7 @@ export default function Bill() {
 										type="number"
 									/>
 								</Grid>
-								<Grid item xs>
+								<Grid item xs={2}>
 									<TextField
 										variant="outlined"
 										name="unit"
@@ -550,7 +550,7 @@ export default function Bill() {
 										label="Unit Measure"
 									/>
 								</Grid>
-								<Grid item xs>
+								<Grid item xs={2}>
 									<TextField
 										variant="outlined"
 										size="small"
