@@ -424,16 +424,15 @@ export default function Bill() {
 								variant="outlined"
 								size="small"
 								name="cgst"
-								onChange={
-									(e) =>
-									{
-										console.log('e.target.value', e.target);
-										setGst({
-											...gst,
-											cgst: e.target.value ? parseInt(e.target.value) : 0,
-										});
-										}
-								}
+								onChange={(e) => {
+									console.log('e.target.value', e.target);
+									setGst({
+										...gst,
+										cgst: e.target.value
+											? parseInt(e.target.value)
+											: 0,
+									});
+								}}
 								value={gst.cgst}
 								fullWidth
 								label="CGST"
@@ -444,17 +443,15 @@ export default function Bill() {
 								variant="outlined"
 								size="small"
 								name="sgst"
-								onChange={
-									(e) =>{
-										console.log('e.target.value', e.target);
-										setGst({
-											...gst,
-											sgst: e.target.value
-												? parseInt(e.target.value)
-												: 0,
-										});
-									}
-								}
+								onChange={(e) => {
+									console.log('e.target.value', e.target);
+									setGst({
+										...gst,
+										sgst: e.target.value
+											? parseInt(e.target.value)
+											: 0,
+									});
+								}}
 								value={gst.sgst}
 								fullWidth
 								label="SGST"
@@ -473,7 +470,7 @@ export default function Bill() {
 						</Grid>
 						{items.map((item, index) => (
 							<>
-								<Grid item xs={4}>
+								<Grid item xs={8} md={4}>
 									<TextField
 										variant="outlined"
 										name="productname"
@@ -488,7 +485,7 @@ export default function Bill() {
 										label="Name"
 									/>
 								</Grid>
-								<Grid item xs={2}>
+								<Grid item xs={4} md={2}>
 									<TextField
 										variant="outlined"
 										size="small"
@@ -504,7 +501,7 @@ export default function Bill() {
 									/>
 								</Grid>
 
-								<Grid item xs={2}>
+								<Grid item xs={4} md={2}>
 									<TextField
 										variant="outlined"
 										size="small"
@@ -512,20 +509,20 @@ export default function Bill() {
 										onChange={(e) => {
 											let val = parseInt(e.target.value);
 											// if (e.target.value) {
-												const list = [...items];
-												const totalRate =
-													val * list[index].rate;
-												const totalGst =
-													gst.cgst + gst.sgst;
-												const taxPerItem = calculateTax(
-													totalRate,
-													totalGst
-												);
-												list[index].qty = val;
-												list[index].tax = taxPerItem;
-												list[index].amount =
-													totalRate + taxPerItem;
-												setItems(list);
+											const list = [...items];
+											const totalRate =
+												val * list[index].rate;
+											const totalGst =
+												gst.cgst + gst.sgst;
+											const taxPerItem = calculateTax(
+												totalRate,
+												totalGst
+											);
+											list[index].qty = val;
+											list[index].tax = taxPerItem;
+											list[index].amount =
+												totalRate + taxPerItem;
+											setItems(list);
 											// }
 										}}
 										value={item.qty}
@@ -534,7 +531,7 @@ export default function Bill() {
 										type="number"
 									/>
 								</Grid>
-								<Grid item xs={2}>
+								<Grid item xs={4} md={2}>
 									<TextField
 										variant="outlined"
 										name="unit"
@@ -550,7 +547,7 @@ export default function Bill() {
 										label="Unit Measure"
 									/>
 								</Grid>
-								<Grid item xs={2}>
+								<Grid item xs={4} md={2}>
 									<TextField
 										variant="outlined"
 										size="small"
@@ -558,22 +555,20 @@ export default function Bill() {
 										onChange={(e) => {
 											let val = parseInt(e.target.value);
 											// if (e.target.value) {
-												const list = [...items];
-												const totalRate =
-													val *
-													list[index].qty;
-												const totalGst =
-													gst.cgst + gst.sgst;
-												const taxPerItem = calculateTax(
-													totalRate,
-													totalGst
-												);
-												list[index].rate =
-													val;
-												list[index].tax = taxPerItem;
-												list[index].amount =
-													totalRate + taxPerItem;
-												setItems(list);
+											const list = [...items];
+											const totalRate =
+												val * list[index].qty;
+											const totalGst =
+												gst.cgst + gst.sgst;
+											const taxPerItem = calculateTax(
+												totalRate,
+												totalGst
+											);
+											list[index].rate = val;
+											list[index].tax = taxPerItem;
+											list[index].amount =
+												totalRate + taxPerItem;
+											setItems(list);
 											// }
 										}}
 										value={item.rate}
