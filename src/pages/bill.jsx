@@ -50,11 +50,12 @@ export default function Bill() {
 		));
 	const [billTo, setBillTo] = useState({company:'',address:''});
 	const [shipTo, setShipTo] = useState({ company: '', address: '' });
-	const [gstNumber, setGstNumber] = useState('27AGGPN7802D2ZH');
-	const [mobile, setMobile] = useState('7977528857');
 	const [company, setCompany] = useState({
 		name: 'Vishal Plastic Products',
-		address: 'Ground floor, Shop number 19, M I Udyog Nagar, Cabin Cross Road, Bhayandar East Thane, 401105, Maharashtra'
+		address:
+			'Ground floor, Shop number 19, M I Udyog Nagar, Cabin Cross Road, Bhayandar East Thane, 401105, Maharashtra',
+		mobile: '7977528857',
+		gstNo: '27AGGPN7802D2ZH',
 	});
 	const [bank, setBank] = useState({
 		name: 'Vishal plastic product',
@@ -192,6 +193,37 @@ export default function Bill() {
 								fullWidth
 							/>
 						</Grid>
+
+						<Grid item xs={12} md={6} textAlign="start">
+							<TextField
+								variant="outlined"
+								size="small"
+								onChange={(e) =>
+									setCompany({
+										...company,
+										mobile: e.target.value,
+									})
+								}
+								value={company.mobile}
+								label="Mobile"
+								fullWidth
+							/>
+						</Grid>
+						<Grid item xs={12} md={6} textAlign="start">
+							<TextField
+								variant="outlined"
+								size="small"
+								onChange={(e) =>
+									setCompany({
+										...company,
+										gstNo: e.target.value,
+									})
+								}
+								value={company.gstNo}
+								label="GSTIN"
+								fullWidth
+							/>
+						</Grid>
 						<Grid item xs={12} textAlign="start">
 							<TextField
 								variant="outlined"
@@ -220,7 +252,7 @@ export default function Bill() {
 								Bank Details
 							</Typography>
 						</Grid>
-						<Grid item xs={6} textAlign="start">
+						<Grid item xs={12} md={6} textAlign="start">
 							<TextField
 								variant="outlined"
 								size="small"
@@ -235,7 +267,7 @@ export default function Bill() {
 								fullWidth
 							/>
 						</Grid>
-						<Grid item xs={6} textAlign="start">
+						<Grid item xs={12} md={6} textAlign="start">
 							<TextField
 								variant="outlined"
 								size="small"
@@ -250,7 +282,7 @@ export default function Bill() {
 								fullWidth
 							/>
 						</Grid>
-						<Grid item xs={6} textAlign="start">
+						<Grid item xs={12} md={6} textAlign="start">
 							<TextField
 								variant="outlined"
 								size="small"
@@ -265,7 +297,7 @@ export default function Bill() {
 								fullWidth
 							/>
 						</Grid>
-						<Grid item xs={6} textAlign="start">
+						<Grid item xs={12} md={6} textAlign="start">
 							<TextField
 								variant="outlined"
 								size="small"
@@ -291,7 +323,7 @@ export default function Bill() {
 								Invoice Details
 							</Typography>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item xs={12} md={4}>
 							<TextField
 								variant="outlined"
 								size="small"
@@ -301,7 +333,7 @@ export default function Bill() {
 								label="Invoice No"
 							/>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item xs={6} md={4}>
 							<TextField
 								variant="outlined"
 								size="small"
@@ -311,7 +343,7 @@ export default function Bill() {
 								label="Invoice Date"
 							/>
 						</Grid>
-						<Grid item xs={4}>
+						<Grid item xs={6} md={4}>
 							<TextField
 								variant="outlined"
 								size="small"
@@ -701,7 +733,7 @@ export default function Bill() {
 								marginLeft: '8px',
 							}}
 						>
-							{mobile}
+							{company.mobile}
 						</Typography>
 						<Typography
 							style={{
@@ -720,7 +752,7 @@ export default function Bill() {
 								marginLeft: '8px',
 							}}
 						>
-							{gstNumber}
+							{company.gstNo}
 						</Typography>
 					</Grid>
 
